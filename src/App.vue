@@ -1,28 +1,28 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+<div>
+    <button @click="show = !show">toggle</button>
+    <button @click="$igv.browser('two').search('chr1:102987575-102987633')">search</button>
+    <button @click="$igv.destroy('two')">destroy</button>
+	<igv-modal id='modalIgv' v-model="show" @ready="loadTracks"/>
+</div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
 export default {
-  name: "App",
-  components: {
-    HelloWorld
-  }
-};
+	data() {
+		return {
+			show: false
+		}
+	},
+	methods: {
+		async loadTracks(id) {
+			await this.$igv.loadBed(id, '/OTOgenics_V4_Covered_liftOver_hg19_hg38_Padded.sorted.bed.gz', '/OTOgenics_V4_Covered_liftOver_hg19_hg38_Padded.sorted.bed.gz.tbi')
+			await this.$igv.loadBam(id, '/P02912-1.bam', '/P02912-1.bam.bai')
+			this.$igv.search(id, 'chr1:169,468,400-169,468,450')
+		}
+	}
+}
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
