@@ -1,5 +1,5 @@
 import igv from 'igv'
-import IgvModal from '@/components/IgvModal.vue'
+import IgvModal from './components/IgvModal.vue'
 
 export default {
 	install (Vue, options) {

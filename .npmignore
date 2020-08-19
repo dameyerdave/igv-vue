@@ -1,0 +1,8 @@
+*
+
+!.npmignore
+!package.json
+!src/components/*
+!src/index.js
+!img/*
+!README.md
