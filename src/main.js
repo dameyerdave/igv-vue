@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import App from '@/App.vue'
-import igv from '@/index'
+import VIgv from '@/index'
 import VModal from 'vue-js-modal'
 
 Vue.config.productionTip = false
 
-Vue.use(igv, {
+Vue.use(VIgv, {
 	reference: {
 		'id': 'hg38',
 		'name': 'Human (GRCh38/hg38)',
